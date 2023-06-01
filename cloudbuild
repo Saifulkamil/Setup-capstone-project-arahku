@@ -1,0 +1,44 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/zulfahmidev/capstone_api/']
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'gs://private-capstone/dev/.env', 'file-env']
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'gs://private-capstone/dev/credentials.json', 'file-credential']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/capstone-project-arahku/capstone_api', '--build-arg', 'ENV_FILE=file-env', '--build-arg', 'CREDENTIAL_FILE=file-credential', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/capstone-project-arahku/capstone_api']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud builds submit --config cloudbuild.yaml
+images:
+  - 'gcr.io/capstone-project-arahku/capstone_api'
+
+
+
+gcloud run deploy capstone-api \
+--image=gcr.io/capstone-project-arahku/staging/capstone_api:1.1.staging \
+--allow-unauthenticated \
+--port=5000 \
+--service-account=864735063861-compute@developer.gserviceaccount.com \
+--min-instances=1 \
+--max-instances=3 \
+--vpc-connector=projects/capstone-project-arahku/locations/asia-southeast2/connectors/stagig \
+--region=asia-southeast2 \
+--project=capstone-project-arahku
+
+
+gcloud run deploy capstone-api \
+--image=gcr.io/capstone-project-arahku/staging/capstone_api:1.1.staging \
+--allow-unauthenticated \
+--port=5000 \
+--service-account=864735063861-compute@developer.gserviceaccount.com \
+--min-instances=1 \
+--max-instances=3 \
+--vpc-connector=projects/capstone-project-arahku/locations/asia-southeast2/connectors/stagig \
+--region=asia-southeast2 \
+--project=capstone-project-arahku
