@@ -1,6 +1,6 @@
-## setup artefact registry
+## setup cloud artefact registry
 
-### setup artefact registry for capstone project
+### setup cloud artefact registry for capstone project
 ```
     - Create repository
         - fill in name capstone
