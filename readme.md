@@ -12,7 +12,7 @@
   - [cloud-SQL](https://github.com/sepol-sys/Setup-capstone-project-arahku/blob/main/Cloud-SQL.md)
 
 - cloud build 
-  -[cloudbuild](https://github.com/sepol-sys/Setup-capstone-project-arahku/blob/main/cloud-build.md)
+  - [cloudbuild](https://github.com/sepol-sys/Setup-capstone-project-arahku/blob/main/cloud-build.md)
 
 - cloud artefact registry
   - [cloud-artefact-registry](https://github.com/sepol-sys/Setup-capstone-project-arahku/blob/main/artefact-registry.md)
