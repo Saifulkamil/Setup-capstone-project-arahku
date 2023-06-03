@@ -1,4 +1,4 @@
-## AIM & Admin
+## IAM & Admin
 
 ### setup iam for colaborations and security
 ```
